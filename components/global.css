@@ -35,6 +35,7 @@ a {
   outline: none;
 }
 
+/* Сортировка */
 .option {
   padding: var(--padding);
   display: flex;
@@ -50,62 +51,15 @@ select ~ .taskSoon {
   background: black !important;
 }
 
+/* Задачи */
 .taskList {
   flex: 1;
   max-height: 100%;
-  overflow: hidden;
-}
-
-.newTaskForm {
-  width: 100%;
-  padding: var(--padding);
-  display: flex;
-  gap: var(--padding);
-}
-
-.newTaskForm > div {
-  min-height: 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.newTaskBeforeData,
-.newTaskBeforeTime,
-.newTaskAdd {
-  height: 50px;
-  padding: var(--padding);
-  border: 1px solid;
-  border-radius: var(--br);
-}
-
-.newTaskForm
-  > div
-  > :is(textarea, input):is(:not(:placeholder-shown), :active, :hover, :focus)
-  ~ label {
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  font-size: 0.45rem;
-}
-
-.newTaskTextTop {
-  flex: 1;
-}
-
-.newTaskText {
-  width: 100%;
-  font-size: inherit;
-  resize: none;
-  border: 1px solid;
-  border-radius: var(--br);
-}
-
-.taskList {
   padding: var(--padding);
   display: flex;
   flex-direction: column;
   gap: var(--padding);
+  overflow: hidden;
 }
 
 .taskList[data-settings*='"timing":"overdue"'] .task:not(.taskOverdue),
@@ -183,4 +137,50 @@ select ~ .taskSoon {
 .taskDeleteBTN:hover :last-child,
 .taskComplite .taskCompliteBTN :last-child {
   display: block;
+}
+
+/* Добавить новую задачу */
+.newTaskForm {
+  width: 100%;
+  padding: var(--padding);
+  display: flex;
+  gap: var(--padding);
+}
+
+.newTaskForm > div {
+  min-height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.newTaskBeforeData,
+.newTaskBeforeTime,
+.newTaskAdd {
+  height: 50px;
+  padding: var(--padding);
+  border: 1px solid;
+  border-radius: var(--br);
+}
+
+.newTaskForm
+  > div
+  > :is(textarea, input):is(:not(:placeholder-shown), :active, :hover, :focus)
+  ~ label {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  font-size: 0.45rem;
+}
+
+.newTaskTextTop {
+  flex: 1;
+}
+
+.newTaskText {
+  width: 100%;
+  font-size: inherit;
+  resize: none;
+  border: 1px solid;
+  border-radius: var(--br);
 }

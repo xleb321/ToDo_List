@@ -11,7 +11,9 @@
     />
   </head>
   <body>
+    <!-- Фильтрация -->
     <section class="option">
+      <!-- По срокам -->
       <select name="" id="" class="optionSelest" data-value="timing">
         <option value="">All</option>
         <option value="overdue">Overdue</option>
@@ -19,6 +21,7 @@
         <option value="make">Make</option>
         <option value="complite">Complite</option>
       </select>
+      <!-- Отображение даты -->
       <select name="" id="" class="optionSelest" data-value="dataTime">
         <option value="">All</option>
         <option value="date">Date</option>
@@ -26,9 +29,12 @@
         <option value="none">None</option>
       </select>
     </section>
+    <!-- Задачи -->
     <section class="taskList" data-settings=""></section>
+    <!-- Ввод информации -->
     <form action="#" method="post" class="newTaskForm">
       <div class="newTaskTextTop">
+        <!-- Текст -->
         <textarea
           name="newText"
           class="newTaskText"
@@ -37,6 +43,7 @@
         ></textarea>
       </div>
       <div>
+        <!-- До какого числа -->
         <input
           type="date"
           name="newTaskBefore"
@@ -47,6 +54,7 @@
         <label for="beforDay">DATA</label>
       </div>
       <div>
+        <!-- До какого времени ремя -->
         <input
           type="time"
           id="beforeTime"

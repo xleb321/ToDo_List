@@ -7,10 +7,12 @@ const settingsSelect = document.querySelectorAll(".optionSelest");
 const taskList = document.querySelector(".taskList");
 let interval;
 
+// Сохранение в localStorage
 let storage = localStorage.getItem("tasks")
   ? JSON.parse(localStorage.getItem("tasks"))
   : [];
 
+// Защита
 const FescapeHtml = (text) => {
   return text
     .replace(/&/g, "&amp;")
@@ -21,6 +23,7 @@ const FescapeHtml = (text) => {
     .replace(/`/g, "&#96;");
 };
 
+// Сколько осталось до конца задачи
 const FtimeСheck = (classTask = "task") => {
   interval = setInterval(() => {
     const date = new Date();
@@ -30,6 +33,7 @@ const FtimeСheck = (classTask = "task") => {
       if (task.classList.contains("complite")) continue;
       const taskData = task.querySelector(".taskData")?.textContent;
       const taskTime = task.querySelector(".taskTime")?.textContent;
+      // Сколько до конечного срока задачи дней
       const time =
         new Date(`${taskData}T${taskTime}:00`).getTime() - date.getTime();
 
@@ -43,17 +47,19 @@ const FtimeСheck = (classTask = "task") => {
         task.classList.add("taskMake");
       }
     }
-  }, 1000);
+  }, 10000);
 
   return true;
 };
 
+// Генерация задач
 const FgenerateTask = (text, data, time, compliting = false) => {
   const task = document.createElement("div");
   task.classList.add("task");
   if (compliting) {
     task.classList.add("taskComplite");
   }
+  // Заполнение информацией 
   task.innerHTML = `
     <div class="taskText">
       ${FescapeHtml(text)}
@@ -80,6 +86,7 @@ const FgenerateTask = (text, data, time, compliting = false) => {
     FtimeСheck("task");
   }
 
+  // Выполнено
   task.querySelector(".taskCompliteBTN").addEventListener("click", () => {
     task.classList.toggle("taskComplite");
     FsaveTaskInStorage(
@@ -90,6 +97,7 @@ const FgenerateTask = (text, data, time, compliting = false) => {
     );
   });
 
+  // Удалить задачу
   task.querySelector(".taskDeleteBTN").addEventListener("click", () => {
     task.remove();
   });
@@ -97,6 +105,7 @@ const FgenerateTask = (text, data, time, compliting = false) => {
   return true;
 };
 
+// Флаги сортировки
 const FsortedTask = (data, value) => {
   let settings = taskList.dataset.settings
     ? JSON.parse(taskList.dataset.settings)
@@ -105,6 +114,7 @@ const FsortedTask = (data, value) => {
   taskList.dataset.settings = JSON.stringify(settings);
 };
 
+// Перезапись и сохранение задачи
 const FsaveTaskInStorage = (text, data, time, compliting = false) => {
   storage = localStorage.getItem("tasks")
     ? JSON.parse(localStorage.getItem("tasks"))
@@ -126,6 +136,7 @@ const FsaveTaskInStorage = (text, data, time, compliting = false) => {
   localStorage.setItem("tasks", JSON.stringify(storage));
 };
 
+// Сбор данных о задаче
 newTask.addEventListener("submit", (e) => {
   e.preventDefault();
   const task = taskInput.value.trim();
@@ -141,6 +152,7 @@ newTask.addEventListener("submit", (e) => {
   taskTime.value = "";
 });
 
+// Сортировка задач
 settingsSelect.forEach((select) => {
   select.addEventListener("change", () => {
     const selected = select.value;
@@ -148,10 +160,12 @@ settingsSelect.forEach((select) => {
   });
 });
 
+// Автогенерация сохранённых задач
 storage.forEach((task) => {
   FgenerateTask(task.task, task.beforeDate, task.beforeTime, task.complite);
 });
 
+// Автоизменение высоты textarea
 document.querySelectorAll("textarea").forEach((textarea) => {
   textarea.addEventListener("input", (e) => {
     textarea.style.height = "auto";

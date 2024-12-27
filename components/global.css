@@ -7,6 +7,10 @@
 :root {
   --color: #202020;
   --bg-color: #f7f7f7;
+  --overdue: #cc0000;
+  --soon: #d2571e;
+  --make: #e9d358;
+  --complite: #12aa12;
   --size: calc(1dvw + 1vh);
   --padding: 0.5rem;
   --br: 0.25rem;
@@ -37,8 +41,9 @@ a {
 
 /* Сортировка */
 .option {
-  padding: var(--padding);
+  padding: var(--br);
   display: flex;
+  align-items: center;
   gap: var(--padding);
 }
 
@@ -47,15 +52,30 @@ a {
   width: 10rem;
 }
 
-select ~ .taskSoon {
-  background: black !important;
+.option div :first-child {
+  display: flex;
+}
+.option div :last-child {
+  display: none;
+}
+.optionComplite {
+  color: var(--complite);
+}
+.optionOverdue {
+  color: var(--overdue);
+}
+.optionSoon {
+  color: var(--soon);
+}
+.optionMake {
+  color: var(--make);
 }
 
 /* Задачи */
 .taskList {
   flex: 1;
   max-height: 100%;
-  padding: var(--padding);
+  padding: var(--br);
   display: flex;
   flex-direction: column;
   gap: var(--padding);
@@ -84,16 +104,16 @@ select ~ .taskSoon {
 }
 
 .taskOverdue {
-  background-color: #cc0000;
+  background-color: var(--overdue);
 }
 .taskSoon {
-  background-color: #d2571e;
+  background-color: var(--soon);
 }
 .taskMake {
-  background-color: #e9d358;
+  background-color: var(--make);
 }
 .taskComplite {
-  background-color: #12aa12 !important;
+  background-color: var(--complite) !important;
 }
 
 .taskText {
@@ -183,4 +203,13 @@ select ~ .taskSoon {
   resize: none;
   border: 1px solid;
   border-radius: var(--br);
+}
+
+@media screen and (max-width: 768px) {
+  .option div :first-child {
+    display: none;
+  }
+  .option div :last-child {
+    display: flex;
+  }
 }

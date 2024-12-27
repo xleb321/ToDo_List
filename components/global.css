@@ -168,7 +168,7 @@ a {
 }
 
 .newTaskForm > div {
-  min-height: 50px;
+  min-height: 2.5rem;
   position: relative;
   display: flex;
   justify-content: center;
@@ -177,16 +177,13 @@ a {
 .newTaskBeforeData,
 .newTaskBeforeTime,
 .newTaskAdd {
-  height: 50px;
+  height: 2.5rem;
   padding: var(--padding);
   border: 1px solid;
   border-radius: var(--br);
 }
 
-.newTaskForm
-  > div
-  > :is(textarea, input):is(:not(:placeholder-shown), :active, :hover, :focus)
-  ~ label {
+.newTaskForm label {
   position: absolute;
   left: 0;
   bottom: 100%;

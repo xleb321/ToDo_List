@@ -25,29 +25,27 @@ const FescapeHtml = (text) => {
 
 // Сколько осталось до конца задачи
 const FtimeСheck = (classTask = "task") => {
-  interval = setInterval(() => {
-    const date = new Date();
-    const tasks = taskList.querySelectorAll(`.${classTask}`);
+  const date = new Date();
+  const tasks = taskList.querySelectorAll(`.${classTask}`);
 
-    for (const task of tasks) {
-      if (task.classList.contains("complite")) continue;
-      const taskData = task.querySelector(".taskData")?.textContent;
-      const taskTime = task.querySelector(".taskTime")?.textContent;
-      // Сколько до конечного срока задачи дней
-      const time =
-        new Date(`${taskData}T${taskTime}:00`).getTime() - date.getTime();
+  for (const task of tasks) {
+    if (task.classList.contains("complite")) continue;
+    const taskData = task.querySelector(".taskData")?.textContent;
+    const taskTime = task.querySelector(".taskTime")?.textContent;
+    // Сколько до конечного срока задачи дней
+    const time =
+      new Date(`${taskData}T${taskTime}:00`).getTime() - date.getTime();
 
-      const daysRemaining = Math.ceil(time / (1000 * 60 * 60 * 24));
+    const daysRemaining = Math.ceil(time / (1000 * 60 * 60 * 24));
 
-      if (daysRemaining <= 0) {
-        task.classList.add("taskOverdue");
-      } else if (daysRemaining < 3) {
-        task.classList.add("taskSoon");
-      } else if (daysRemaining < 8) {
-        task.classList.add("taskMake");
-      }
+    if (daysRemaining <= 0) {
+      task.classList.add("taskOverdue");
+    } else if (daysRemaining < 3) {
+      task.classList.add("taskSoon");
+    } else if (daysRemaining < 8) {
+      task.classList.add("taskMake");
     }
-  }, 10000);
+  }
 
   return true;
 };
@@ -174,3 +172,7 @@ document.querySelectorAll("textarea").forEach((textarea) => {
     }px`;
   });
 });
+
+interval = setInterval(() => {
+  FtimeСheck();
+}, 10000);

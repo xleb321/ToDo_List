@@ -59,7 +59,7 @@ const FgenerateTask = (text, data, time, compliting = false) => {
   if (compliting) {
     task.classList.add("taskComplite");
   }
-  // Заполнение информацией 
+  // Заполнение информацией
   task.innerHTML = `
     <div class="taskText">
       ${FescapeHtml(text)}
@@ -147,7 +147,7 @@ newTask.addEventListener("submit", (e) => {
   FgenerateTask(task, beforeDate, beforeTime);
   FsaveTaskInStorage(task, beforeDate, beforeTime, false);
 
-  task.textContent = "";
+  taskInput.value = "";
   taskData.value = "";
   taskTime.value = "";
 });

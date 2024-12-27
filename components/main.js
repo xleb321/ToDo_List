@@ -54,6 +54,7 @@ const FtimeСheck = (classTask = "task") => {
 const FgenerateTask = (text, data, time, compliting = false) => {
   const task = document.createElement("div");
   task.classList.add("task");
+
   if (compliting) {
     task.classList.add("taskComplite");
   }
@@ -75,8 +76,8 @@ const FgenerateTask = (text, data, time, compliting = false) => {
         <i class='bx bxs-trash' ></i>
         <i class='bx bxs-trash bx-tada' ></i>
       </button>
+      
     </div>
-    
   `;
   taskList.appendChild(task);
 

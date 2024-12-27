@@ -23,7 +23,7 @@ html {
 body {
   color: var(--color);
   background-color: var(--bg-color);
-  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -41,10 +41,12 @@ a {
 
 /* Сортировка */
 .option {
-  padding: var(--br);
+  flex: 0 0 auto;
+  padding: var(--br) var(--padding);
   display: flex;
   align-items: center;
   gap: var(--padding);
+  background: rgba(0, 0, 0, 0);
 }
 
 .optionSelest {
@@ -55,31 +57,37 @@ a {
 .option div :first-child {
   display: flex;
 }
+
 .option div :last-child {
   display: none;
 }
+
 .optionComplite {
   color: var(--complite);
 }
+
 .optionOverdue {
   color: var(--overdue);
 }
+
 .optionSoon {
   color: var(--soon);
 }
+
 .optionMake {
   color: var(--make);
 }
 
 /* Задачи */
 .taskList {
-  flex: 1;
-  max-height: 100%;
-  padding: var(--br);
+  flex: 1 1 auto;
+  padding: var(--padding);
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: var(--padding);
   overflow: hidden;
+  overflow-y: auto;
 }
 
 .taskList[data-settings*='"timing":"overdue"'] .task:not(.taskOverdue),
@@ -96,6 +104,11 @@ a {
 }
 
 .task {
+  align-self: start;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  margin: 0 auto;
   padding: var(--padding);
   display: flex;
   gap: var(--padding);
@@ -106,12 +119,15 @@ a {
 .taskOverdue {
   background-color: var(--overdue);
 }
+
 .taskSoon {
   background-color: var(--soon);
 }
+
 .taskMake {
   background-color: var(--make);
 }
+
 .taskComplite {
   background-color: var(--complite) !important;
 }
@@ -161,6 +177,7 @@ a {
 
 /* Добавить новую задачу */
 .newTaskForm {
+  flex: 0 0 auto;
   width: 100%;
   padding: var(--padding);
   display: flex;

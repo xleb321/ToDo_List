@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color: #202020;
+  --bg-color: #f7f7f7;
+  --size: calc(1dvw + 1vh);
+  --padding: 0.5rem;
+  --br: 0.25rem;
+}
+
+html {
+  font-size: clamp(12px, var(--size), 24px);
+}
+
+body {
+  color: var(--color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea,
+input,
+button,
+a {
+  color: inherit;
+  background-color: inherit;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.option {
+  padding: var(--padding);
+  display: flex;
+  gap: var(--padding);
+}
+
+.optionSelest {
+  min-width: 15%;
+  width: 10rem;
+}
+
+select ~ .taskSoon {
+  background: black !important;
+}
+
+.taskList {
+  flex: 1;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.newTaskForm {
+  width: 100%;
+  padding: var(--padding);
+  display: flex;
+  gap: var(--padding);
+}
+
+.newTaskForm > div {
+  min-height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.newTaskBeforeData,
+.newTaskBeforeTime,
+.newTaskAdd {
+  height: 50px;
+  padding: var(--padding);
+  border: 1px solid;
+  border-radius: var(--br);
+}
+
+.newTaskForm
+  > div
+  > :is(textarea, input):is(:not(:placeholder-shown), :active, :hover, :focus)
+  ~ label {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  font-size: 0.45rem;
+}
+
+.newTaskTextTop {
+  flex: 1;
+}
+
+.newTaskText {
+  width: 100%;
+  font-size: inherit;
+  resize: none;
+  border: 1px solid;
+  border-radius: var(--br);
+}
+
+.taskList {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
+}
+
+.taskList[data-settings*='"timing":"overdue"'] .task:not(.taskOverdue),
+.taskList[data-settings*='"timing":"soon"'] .task:not(.taskSoon),
+.taskList[data-settings*='"timing":"make"'] .task:not(.taskMake),
+.taskList[data-settings*='"timing":"complite"'] .task:not(.taskComplite) {
+  display: none;
+}
+
+.taskList[data-settings*='"dataTime":"date"'] .task .taskTime,
+.taskList[data-settings*='"dataTime":"time"'] .task .taskData,
+.taskList[data-settings*='"dataTime":"none"'] .task :is(.taskData, .taskTime) {
+  display: none;
+}
+
+.task {
+  padding: var(--padding);
+  display: flex;
+  gap: var(--padding);
+  box-shadow: 0 0 0.3rem 0rem;
+  border-radius: var(--br);
+}
+
+.taskOverdue {
+  background-color: #cc0000;
+}
+.taskSoon {
+  background-color: #d2571e;
+}
+.taskMake {
+  background-color: #e9d358;
+}
+.taskComplite {
+  background-color: #12aa12 !important;
+}
+
+.taskText {
+  flex: 1;
+}
+
+.taskNoun,
+.taskButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--br);
+}
+
+.taskDeleteBTN,
+.taskCompliteBTN {
+  font-size: 1.5rem;
+}
+
+.taskDeleteBTN:hover,
+.taskCompliteBTN:hover {
+  cursor: pointer;
+}
+
+.taskDeleteBTN :first-child,
+.taskCompliteBTN :first-child {
+  display: block;
+}
+
+.taskDeleteBTN :last-child,
+.taskCompliteBTN :last-child {
+  display: none;
+}
+
+.taskDeleteBTN:hover :first-child,
+.taskComplite .taskCompliteBTN :first-child {
+  display: none;
+}
+
+.taskDeleteBTN:hover :last-child,
+.taskComplite .taskCompliteBTN :last-child {
+  display: block;
+}

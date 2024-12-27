@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo_List</title>
+    <link rel="stylesheet" href="./components/global.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="option">
+      <select name="" id="" class="optionSelest" data-value="timing">
+        <option value="">All</option>
+        <option value="overdue">Overdue</option>
+        <option value="soon">Soon</option>
+        <option value="make">Make</option>
+        <option value="complite">Complite</option>
+      </select>
+      <select name="" id="" class="optionSelest" data-value="dataTime">
+        <option value="">All</option>
+        <option value="date">Date</option>
+        <option value="time">Time</option>
+        <option value="none">None</option>
+      </select>
+    </section>
+    <section class="taskList" data-settings=""></section>
+    <form action="#" method="post" class="newTaskForm">
+      <div class="newTaskTextTop">
+        <textarea
+          name="newText"
+          class="newTaskText"
+          id="newText"
+          placeholder=""
+        ></textarea>
+      </div>
+      <div>
+        <input
+          type="date"
+          name="newTaskBefore"
+          class="newTaskBeforeData"
+          id="beforDay"
+          placeholder=""
+        />
+        <label for="beforDay">DATA</label>
+      </div>
+      <div>
+        <input
+          type="time"
+          id="beforeTime"
+          class="newTaskBeforeTime"
+          name="time"
+          placeholder=""
+        />
+        <label for="beforeTime">HH:MM</label>
+      </div>
+      <button type="submit" class="newTaskAdd">Add task</button>
+    </form>
+    <script src="./components/main.js"></script>
+  </body>
+</html>
